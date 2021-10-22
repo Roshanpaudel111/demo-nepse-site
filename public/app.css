@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  color: black;
+}
+.h1 {
+  /* color: white; */
+  margin: 3%;
+  text-align: center;
+}
+table {
+  width: 500px;
+}
+.tableDiv {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.table tr,
+.table td {
+  text-align: center;
+}
+table .companyName {
+  text-align: left;
+}
+.green {
+  background-color: rgb(205, 255, 205);
+}
+.red {
+  background-color: rgb(255, 191, 191);
+}

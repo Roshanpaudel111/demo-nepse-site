@@ -5,6 +5,7 @@ const axios = require("axios").default;
 const cors = require("cors");
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(
   cors({
@@ -13,16 +14,21 @@ app.use(
 );
 
 fetchData = async () => {
-  const data = await axios.get(
+  const res = await axios.get(
     "https://nepse-data-api.herokuapp.com/data/todaysprice"
   );
-  console.log(data);
-  return data;
+  console.log(res.data);
+  return res.data;
 };
 
-app.get("/", (req, res) => {
-  const nepseData = fetchData();
+app.get("/", async (req, res) => {
+  try {
+    const nepseData = await fetchData();
   res.render("home.ejs", { nepseData });
+  } catch (error) {
+    res.render('error.ejs')
+  }
+  
 });
 
 app.listen(3000, () => {

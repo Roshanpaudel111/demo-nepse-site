@@ -5,8 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="app.css" />
   </head>
   <body>
-    <%= nepseData %>
+    <div>
+      <h1 class="h1">Today's Share Price</h1>
+    </div>
+    <div class="tableDiv">
+      <table class="table">
+        <tr>
+          <th class="companyName">Company Name</th>
+          <th>Day high</th>
+          <th>Day low</th>
+          <th>LTP</th>
+          <th>Volume</th>
+          <th>Difference</th>
+        </tr>
+        <% nepseData.forEach(function(data){ %>
+        <tr class="stocks">
+          <td class="companyName"><%= data.companyName %></td>
+          <td><%= data.maxPrice %></td>
+          <td><%= data.minPrice %></td>
+          <td><%= data.closingPrice %></td>
+          <td><%= data.tradedShares %></td>
+          <td class="differences"><%= data.difference %></td>
+        </tr>
+        <% });%>
+      </table>
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
